@@ -4,10 +4,6 @@
  * all of the tests that will be run against your application.
  */
 
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
- */
 $(function() {
     /* This is the first test suite. This suite is all about the RSS
      * feeds definitions, the allFeeds variable in our application.
@@ -29,7 +25,7 @@ $(function() {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
                 expect(feed.url).toMatch(/^(http|https):\/\//);
-            })
+            });
         });
 
         /* This is the third test. It tests to make sure that the
@@ -41,7 +37,7 @@ $(function() {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
                 expect(typeof feed.name).toBe('string');
-            })
+            });
         });
 
     });
@@ -56,7 +52,7 @@ $(function() {
             menuIcon = document.querySelector('.icon-list');
         it('is hidden by default', function() {
             expect(body.className).toBe('menu-hidden');
-        })
+        });
         /* Here we test the functionality of the menu button. It
          * should show the feed list by clicking on it and hide it
          * when clicked on again.
@@ -66,8 +62,8 @@ $(function() {
             expect(body.className).not.toBe('menu-hidden');
             menuIcon.click();
             expect(body.className).toBe('menu-hidden');
-        })
-    })
+        });
+    });
 
     /* This is the third test suite. It tests the loadfeed function
      * and the initial entries.
@@ -79,15 +75,15 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
-            })
-        })
+            });
+        });
 
         it('should consist of at least one .entry element', function(done) {
             const entries = document.querySelectorAll('.entry');
             expect(entries.length).toBeGreaterThan(0);
             done();
-        })
-    })
+        });
+    });
 
     /* This is the final test suite. It further examines the functionality
      * of the loadfeed function.
@@ -101,15 +97,15 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
                 oldFeed = feed.innerHTML;
-                loadFeed(Math.floor((Math.random() * (allFeeds.length)) + 1), function() {
+                loadFeed(Math.floor((Math.random() * (allFeeds.length - 1)) + 1), function() {
                     done();
-                })
-            })
-        })
+                });
+            });
+        });
 
         it('should actually change content, when loadfeed loads a new feed', function() {
             const newFeed = feed.innerHTML;
             expect(oldFeed).not.toBe(newFeed);
-        })
-    })
+        });
+    });
 }());
