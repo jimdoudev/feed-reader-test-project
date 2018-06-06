@@ -6,7 +6,7 @@ This Project tests the Feed Reader app using JS testing framework **Jasmine**.
 - [2.1 Jasmine documentation](http://jasmine.github.io/2.1/introduction.html)
 
 ### How to run this test
-- Simply visit the online public [version]()!
+- Simply visit the online public [version](https://jimdoudev.github.io/feed-reader-test-project/)!
 - You can find the test results at the end of the document.
 
 ### How to run the this locally
